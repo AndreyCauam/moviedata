@@ -2,10 +2,18 @@ const { Router } = require('express')
 
 const UsersController = require('../controllers/UsersController')
 
-const userRoutes = Router()
+const usersRoutes = Router()
+
+// function myMiddleware(request, response, next) {
+//   console.log('chama')
+//   if (!request.body.isAdmin) {
+//     return response.json({ message: 'user unauthorized' })
+//   }
+//   next()
+// }
 
 const usersController = new UsersController()
 
-userRoutes.post('/', usersController.create)
+usersRoutes.post('/', usersController.create)
 
-module.exports = userRoutes
+module.exports = usersRoutes
