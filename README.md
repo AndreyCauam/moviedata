@@ -10,6 +10,7 @@ Conceitos:
 - Banco de dados usando SQLite;
 - Manipulação do DB utilizando Beekeper Studio;
 - Query Builder Knex.js
+- Criptografia de senha através do bcryptjs
 
 <h3> Acesse o projeto no link abaixo <h3>
 ⏰ Loading
