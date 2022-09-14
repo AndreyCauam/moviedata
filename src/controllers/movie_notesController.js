@@ -8,9 +8,9 @@ class movies_notesController {
 
     const { user_id } = request.params
 
-    if (rating < 0 && rating > 5) {
-      throw new AppError('O rating deve ser um valor entre o número 0 e 5')
-    }
+    // if (rating < 0 && rating > 5) {
+    //   throw new AppError('O rating deve ser um valor entre o número 0 e 5')
+    // }
 
     const note_id = await knex('movies_notes').insert({
       title,
@@ -30,6 +30,19 @@ class movies_notesController {
     await knex('movie_tags').insert(tagsInsert)
 
     response.json()
+  }
+
+  async show(request, response) {
+    const { id } = request.params
+
+    const note = await knex('movies_notes').where({ id }).first()
+
+    const tags = await knex('movie_tags').where({ note_id: id }).orderBy('name')
+
+    return response.json({
+      ...note,
+      tags
+    })
   }
 }
 
